@@ -12,19 +12,18 @@ const viualizeVariants = {
 };
 
 export async function getStaticProps(context) {
-  console.log("ok");
-  const res = await axios.get("http://localhost:5000/");
-  
-  
-  return { props: { allCharts: res.data } };
+  try {
+    const res = await axios.get("http://localhost:5000/");
+    return { props: { allCharts: res.data } };
+  } catch (error) {
+    console.log(`There has been the following error: ${error}`)
+  }
 }
 
-
 export default function Home({ allCharts }) {
-  
   return (
     <div className="flex flex-col justify-around h-full">
-      <StartChart data={allCharts[2]}/>
+      <StartChart data={allCharts[2]} />
       <Head>
         <title>Vizweb</title>
         <link rel="icon" href="/favicon.ico" />
@@ -67,6 +66,9 @@ export default function Home({ allCharts }) {
               Sign up!
             </motion.a>
           </Link>
+          <div className="absolute right-0 bottom-0 h-10 w-10 bg-RED">
+
+          </div>
         </div>
       </div>
     </div>
