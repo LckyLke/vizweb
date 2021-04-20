@@ -1,7 +1,7 @@
 import * as firebaseAdmin from "firebase-admin";
 require('dotenv').config()
 
-console.log(process.env)
+
 
 if (!firebaseAdmin.apps.length) {
   firebaseAdmin.initializeApp({
